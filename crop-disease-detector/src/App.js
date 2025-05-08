@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import CameraCapture from "./CameraCapture";
 
 function App() {
+  const [image, setImage] = useState(null);
+
+  const handleImageCapture = (imageData) => {
+    console.log("Image captured/uploaded:", imageData);
+    // Later, we'll send this image to AI model
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h1>🌾 Crop Disease Detector</h1>
+      <p>Take a photo or upload an image of a diseased crop.</p>
+
+      <CameraCapture onCapture={handleImageCapture} />
+
+      {/* Future features will go here */}
     </div>
   );
 }
